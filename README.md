@@ -8,6 +8,8 @@ var secrets = {
 ```
 Or simply remove the code involving last.fm but thats hard and who knows.
 
+To personalize your name in it, just find the `name` variable in `index.html`'s script tag.
+
 Here are the places I stole code from xD.
 
 - Now playing widget and js and css for that: https://prashant.me/ (more specifically https://prashant.me/development/2018/03/04/creating-a-web-widget-to-get-currently-playing-song-tracks-using-lastfm.html)
