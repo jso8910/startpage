@@ -54,6 +54,10 @@ h2 {
   display: flex;
 }
 
+.playing {
+  justify-content: center;
+}
+
 .item {
   height: 160px;
   flex-grow: 1;
@@ -74,6 +78,7 @@ body .nowplayingcard {
   max-width: 20%;
   margin: 0 auto;
   margin-top: 5%;
+  padding: 30px
 }
 body .nowplayingcard .nowplayingcontainer-inner {
   width: 100%;
