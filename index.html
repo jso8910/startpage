@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="styles.css">
+	<script
+		src="https://code.jquery.com/jquery-3.6.0.min.js"
+		integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+		crossorigin="anonymous"></script>
+	<title>New tab</title>
+	<script type="text/javascript" src="secrets.js"></script>
+</head>
+<body> 
+
+	<div class="card" id="title">
+		<div id="textGreetContainer">
+			<h2 id="greetings">Good Evening</h2>
+			<h3 id="txt"></h3>
+		</div>
+	</div>
+	<div class="content">
+		<div class="row">
+			<div class="card item button" onclick="window.open('https://github.com', '_blank')"><img src="images/github.png"></div>
+			<div class="card item button" onclick="window.open('https://mail.google.com', '_blank')"><img src="images/mail.png"></div>
+			<div class="card item button" onclick="window.open('https://twitter.com', '_blank')"><img src="images/twitter.png"></div>
+		</div>
+		<div class="row">
+<div class="card item nowplayingcard">
+
+  <div class="nowplayingcontainer-inner">
+    <img id="trackart" src="#">
+    <div class="trackInfo">
+      <a id="tracktitle"></a>
+      <a href="#" id="trackartist"></a>
+    </div>
+  </div>
+</div>
+		</div>
+	</div>
+	<script>
+		var timer = document.getElementById('timer');
+
+		function startTime() {
+			var today = new Date();
+			var h = today.getHours();
+			var m = today.getMinutes();
+			var s = today.getSeconds();
+			var ampm = h >= 12 ? 'PM' : 'AM';
+
+
+			// Here you can change your name
+			const name = ' Jason';
+
+			// Here you can change your greetings
+			const gree1 = 'Go to sleep,  ';
+			const gree2 = 'Good morning,  ';
+			const gree3 = 'Good afternoon  ';
+			const gree4 = 'Good evening,  ';
+			const gree5 = 'Good evening,  ';
+			const gree6 = 'Good evening,  ';
+
+			// Define the hours of the greetings
+			if (h >= 23 && h < 5) {
+				document.getElementById('greetings').innerText = gree1 + name;
+			} else if (h >= 6 && h < 12) {
+				document.getElementById('greetings').innerText = gree2 + name;
+			} else if (h >= 12 && h < 17) {
+				document.getElementById('greetings').innerText = gree3 + name;
+			} else {
+				document.getElementById('greetings').innerText = gree4 + name;
+			}
+
+			h = h % 12;
+			h = h ? h : 12; // the hour '0' should be '12'
+			m = checkTime(m);
+			s = checkTime(s);
+			document.getElementById('txt').innerHTML =
+			h + ":" + m + ":" + s + " " + ampm;
+
+			var t = setTimeout(startTime, 500);
+		}
+		
+		function checkTime(i) {
+			if (i < 10) {i = "0" + i};  // add zero in front of numbers <script 10
+			return i;
+		}
+		document.addEventListener('DOMContentLoaded', (event) => {
+    	startTime()
+		});
+
+/**
+  Developed by Prashant Shrestha
+  + https://prashant.me
+*/
+var lastfmData = {
+  baseURL:
+    "https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=",
+  // Your Last.fm Username
+  user: secrets.username,
+  // Your API key
+  api_key: secrets.key,
+  additional: "&format=json&limit=1"
+};
+
+var getSetLastFM = function() {
+  $.ajax({
+    type: "GET",
+    url:
+      lastfmData.baseURL +
+      lastfmData.user +
+      "&api_key=" +
+      lastfmData.api_key +
+      lastfmData.additional,
+    dataType: "json",
+    success: function(resp) {
+      var recentTrack = resp.recenttracks.track[0];
+			console.log(recentTrack)
+      var formatted =
+      	recentTrack.name;
+      $("a#tracktitle")
+        .html(formatted)
+        .attr("href", recentTrack.url)
+        .attr("title", recentTrack.name + " by " + recentTrack.artist["#text"])
+        .attr("target", "_blank");
+
+      var artistFormatted =
+        recentTrack.artist["#text"];
+      $("a#trackartist")
+        .html(artistFormatted)
+        .attr("title", "Artist : " + recentTrack.artist["#text"]);
+      $("img#trackart").attr("src", recentTrack.image[2]["#text"]);
+    },
+    error: function(resp) {
+      $("a#tracktitle").html(
+        "Network error or other error"
+      );
+      $("img#trackart").attr("src", "images/music.png");
+      var artistFormatted =
+        "Song not found";
+      $("a#trackartist")
+        .html(artistFormatted)
+        .attr("href", "www.prashant.me/");
+    }
+  });
+};
+
+// Get the new one.
+getSetLastFM();
+// Start the countdown.
+setInterval(getSetLastFM, 10 * 1000);
+
+</script>
+</body>
+</html>

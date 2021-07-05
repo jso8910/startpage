@@ -1,0 +1,133 @@
+body {
+  background: #222222;
+  color: #fff;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.card {
+  text-align: center;
+  box-shadow: 10px 10px 25px #000000;
+  margin: 25px;
+  align-items: center;
+  background-color: #333333;
+  border-radius: 50px;
+  justify-content: center;
+  margin-right: 4rem;
+  position: relative;
+  padding: 10px;
+}
+
+
+.button {
+  -webkit-transition: all 0.2s;
+  -moz-transition: all 0.2s;
+  -ms-transition: all 0.2s;
+    -o-transition: all 0.2s;
+       transition: all 0.2s;
+  box-shadow: 10px 10px 25px #000000;
+}
+
+.button:hover {
+  box-shadow: 8px 8px 25px #000000;
+  transform: translateX(2px) translateY(2px);
+  cursor: pointer;
+}
+
+.button:active {
+  box-shadow: 2px 2px 15px #000000;
+  transform: translateX(5px) translateY(5px)
+}
+
+#title {
+  padding: 0px;
+  text-align: center;
+  height: 200px;
+  display: flex;
+  align-items: center; 
+}
+
+h2 {
+  font-size: 50px;
+}
+
+.row {
+  display: flex;
+}
+
+.item {
+  height: 160px;
+  flex-grow: 1;
+  flex-basis: 25%;
+  display: flex;
+  align-items: center; 
+}
+
+.item > img {
+  width: auto;
+  height: 50%;
+  border-radius: 0px;
+}
+
+/* STUFF MADE ZERO PERCENT BY ME https://prashant.me/development/2018/03/04/creating-a-web-widget-to-get-currently-playing-song-tracks-using-lastfm.html */
+body .nowplayingcard {
+  min-width: 200px;
+  max-width: 20%;
+  margin: 0 auto;
+  margin-top: 5%;
+}
+body .nowplayingcard .nowplayingcontainer-inner {
+  width: 100%;
+  transition: 0.3s;
+  display: inline-block;
+  border-radius: 10px;
+}
+body .nowplayingcard .nowplayingcontainer-inner img#trackart {
+  max-width: 30%;
+  float: left;
+  left: 0;
+  border-radius: 10px;
+}
+body .nowplayingcard .nowplayingcontainer-inner .trackInfo {
+  width: 70%;
+  float: left;
+  display: block;
+}
+body .nowplayingcard .nowplayingcontainer-inner .trackInfo a {
+  max-width: 90%;
+  display: block;
+  font-size: 14px;
+  text-align: left;
+  text-decoration: none;
+  /* vertical-align: middle; */
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+body .nowplayingcard .nowplayingcontainer-inner .trackInfo a:nth-child(odd) {
+  color: white;
+  font-weight: bold;
+  vertical-align: middle;
+  line-height: 15px;
+  letter-spacing: 0.2px;
+  padding: 10% 0 0 5%;
+}
+body .nowplayingcard .nowplayingcontainer-inner .trackInfo a:nth-child(odd) img {
+  width: 15px;
+  height: 15px;
+  vertical-align: middle;
+  margin: -2% 3px 0 0;
+}
+body .nowplayingcard .nowplayingcontainer-inner .trackInfo a:nth-child(even) {
+  color: lightgray;
+  font-size: 12px;
+  letter-spacing: 0.1px;
+  padding: 5% 0 0 5%;
+}
+body .nowplayingcard .nowplayingcontainer-inner .trackInfo a:nth-child(even) img {
+  width: 15px;
+  height: 15px;
+  vertical-align: middle;
+  margin: -2% 3px 0 0;
+}
+
+/*# sourceMappingURL=out.scss.map */
